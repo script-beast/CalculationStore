@@ -1,0 +1,61 @@
+.formcomp {
+  background-color: transparent;
+}
+
+.formcomp .wrapper {
+  width: 100%;
+  /* height: 100%; */
+  margin-top: 40px;
+}
+
+.formcomp .wrapper .content {
+  background: #fff;
+  /* padding: 40px; */
+  box-shadow: 5px 20px 50px #000;
+
+  width: 100%;
+  max-width: 500px;
+  min-width: 200px;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.formcomp .wrapper .content footer {
+  padding: 15px;
+}
+.formcomp .wrapper .content footer input {
+  border: unset;
+  background-color: #e4eff8;
+  /* background: linear-gradient(to bottom, #0f0c29, #302b63, #24243e); */
+  padding: 15px;
+  font-size: 13px;
+  border-radius: 50px;
+  width: 250px;
+}
+.formcomp .wrapper .content footer button {
+  background-color: #0575e6;
+  color: #fff;
+  border: unset;
+  width: 120px;
+  border-radius: 50px;
+  padding: 15px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+
+.formcomp .wrapper .content footer input:focus,
+.formcomp .wrapper .content footer button:focus {
+  outline: none;
+}
+
+@media screen and (max-width: 720px) {
+  .formcomp .wrapper .content {
+    margin-right: 20px !important;
+    margin-left: 20px !important;
+    padding: 15px;
+  }
+  .formcomp .wrapper .content footer input {
+    width: 200px;
+    margin-bottom: 10px;
+  }
+}
