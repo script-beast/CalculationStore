@@ -8,6 +8,14 @@ import Form from "../Components/Form";
 import Entries from "../Components/Entries";
 
 const MainPage = () => {
+  const navigate = useNavigate();
+
+  React.useEffect(() => {
+    if (!localStorage.getItem("name")) {
+      navigate("/login");
+    }
+  }, []);
+
   const [Operand1, setOperand1] = React.useState<string>("");
   const [Operand2, setOperand2] = React.useState<string>("");
   const [Operator, setOperator] = React.useState<string>("");
@@ -124,7 +132,7 @@ const MainPage = () => {
     };
     console.log(data);
 
-    fetch("http://localhost:3000/caldata/add", {
+    fetch("https://calculationstore.onrender.com/caldata/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -151,7 +159,7 @@ const MainPage = () => {
   React.useEffect(() => {
     const id = localStorage.getItem("id");
 
-    fetch(`http://localhost:3000/caldata/get/${id}`)
+    fetch(`https://calculationstore.onrender.com/caldata/get/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setList(data);
@@ -159,7 +167,7 @@ const MainPage = () => {
   }, []);
 
   const deleteEntry = (id: string) => {
-    fetch(`http://localhost:3000/caldata/delete/${id}`, {
+    fetch(`https://calculationstore.onrender.com/caldata/delete/${id}`, {
       method: "DELETE",
     }).then(() => {
       const newList = List.filter((item: ListType) => item._id !== id);
@@ -170,7 +178,6 @@ const MainPage = () => {
   // For Navbar
 
   const name = localStorage.getItem("name");
-  const navigate = useNavigate();
 
   const logout = () => {
     localStorage.removeItem("name");
