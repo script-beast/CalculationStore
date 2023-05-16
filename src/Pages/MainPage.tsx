@@ -2,6 +2,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ListType } from "../Interface";
+import BaseURL from "../BaseURL";
 
 import Calculator from "../Components/Calculator";
 import Form from "../Components/Form";
@@ -132,7 +133,7 @@ const MainPage = () => {
     };
     console.log(data);
 
-    fetch("https://calculationstore.onrender.com/caldata/add", {
+    fetch(BaseURL + "/caldata/add", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -159,7 +160,7 @@ const MainPage = () => {
   React.useEffect(() => {
     const id = localStorage.getItem("id");
 
-    fetch(`https://calculationstore.onrender.com/caldata/get/${id}`)
+    fetch(BaseURL + `/caldata/get/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setList(data);
@@ -167,7 +168,7 @@ const MainPage = () => {
   }, []);
 
   const deleteEntry = (id: string) => {
-    fetch(`https://calculationstore.onrender.com/caldata/delete/${id}`, {
+    fetch(BaseURL + `/caldata/delete/${id}`, {
       method: "DELETE",
     }).then(() => {
       const newList = List.filter((item: ListType) => item._id !== id);

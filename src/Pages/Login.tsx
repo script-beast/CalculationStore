@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import LoginSignup from "../Components/LoginSignup";
 
+import BaseURL from "../BaseURL";
+
 const Login = () => {
   const navigate = useNavigate();
   const [username, setName] = React.useState<string>("");
@@ -23,7 +25,7 @@ const Login = () => {
     if (username === "") return;
     if (password === "") return;
 
-    const response = await fetch("https://calculationstore.onrender.com/users/login", {
+    const response = await fetch(BaseURL + "/users/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,7 +50,7 @@ const Login = () => {
     if (username === "") return;
     if (password === "") return;
 
-    const response = await fetch("https://calculationstore.onrender.com/users/register", {
+    const response = await fetch(BaseURL + "/users/register", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
